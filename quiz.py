@@ -30,12 +30,15 @@ class Quiz:
         return questions
 
     def run_quiz(self):
+
+        # Loops through the questions and asks the user for an answer
         for question in self.questions:
-            print(question.prompt)
+            print("\n" + question.prompt)
             for i, answer in enumerate(question.answers):
                 print(index_to_letter(i) + ": " + answer[0])
             print()
 
+            # Get a valid answer from the user
             while True:
                 response = input(":")
                 try:
@@ -49,18 +52,21 @@ class Quiz:
                     print("Invalid response. Please try again.")
 
             
-            print()
+            # Check if the answer is correct and update the score
             if question.answers[letter_to_index(response)][1]:
                 self.score += 1
-                print("Correct answer! Keep going!")
+                print("\nCorrect answer! Keep going!")
             else:
-                print( f"Wrong answer! Better luck next time!\nCorrect answer: {question.correct_answer}" )
+                print( f"\nWrong answer! Better luck next time!\nCorrect answer: {question.correct_answer}" )
 
+
+        # Print the final score
         print("You got " + str(self.score) + "/" + str(len(self.questions)) + " correct")
 
 
 ### Helpers
 
+# These functions transform a list index to the corresponding capital letter and back
 def index_to_letter(index):
     return chr(65 + index)
 

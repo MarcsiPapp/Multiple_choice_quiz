@@ -10,7 +10,7 @@ class Question:
         # Shuffle the order of the answers
 
         correct = [ True ] + [ False ] * (len(answers) - 1)     # This will create a list in the form [True, False, False...]
-        answers_correct = list(zip(answers, correct))
+        answers_correct = list(zip(answers, correct))           # Use tuples to mark the first as correct and the rest as incorrect
         random.shuffle(answers_correct)
 
         self.answers = answers_correct
